@@ -1,0 +1,10 @@
+services:
+  backend-apache:
+    build: ./apache
+    container_name: practica1_nimbus
+    ports:
+      - "8011:8011"
+    volumes:
+      - ./html/privado:/var/www/privado
+      - ./html/clientes:/var/www/clientes
+    restart: always
