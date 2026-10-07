@@ -1,5 +1,5 @@
 services:
-  backend-apache:
+  apache-mapache:
     build: ./apache
     container_name: practica1_nimbus
     ports:
