@@ -1,0 +1,26 @@
+services:
+  apache-mapache:
+    image: httpd:latest
+    container_name: practica_nimbus
+    expose:
+      - "8011"
+    volumes:
+      - ./html/clientes:/var/www/clientes
+      - ./html/privado:/var/www/privado
+      - ./apache/config-servicios:/usr/local/apache2/conf/config-servicios
+      - ./apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
+    restart: always
+
+  jinx-proxy:
+    image: nginx:latest
+    container_name: practica_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/ec-cert.pem:/etc/nginx/certs/ec-cert.pem
+      - ./nginx/ec-privkey.pem:/etc/nginx/certs/ec-privkey.pem
+    depends_on:
+      - apache-mapache
+    restart: always
