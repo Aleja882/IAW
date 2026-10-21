@@ -1,6 +1,5 @@
 services:
   apache-mapache:
-<<<<<<< HEAD
     image: ubuntu/apache2:latest
     container_name: practica_nimbus
     ports:
@@ -9,17 +8,6 @@ services:
       - ./html/clientes:/var/www/clientes
       - ./html/privado:/var/www/privado
       - ./apache/config-servicios:/etc/apache2/sites-available
-=======
-    image: httpd:latest
-    container_name: practica_nimbus
-    expose:
-      - "8011"
-    volumes:
-      - ./html/clientes:/var/www/clientes
-      - ./html/privado:/var/www/privado
-      - ./apache/config-servicios:/usr/local/apache2/conf/config-servicios
-      - ./apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
->>>>>>> b10d2ff68d71702bdc97ca67deaeba3bb328c369
     restart: always
 
   jinx-proxy:
